@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyGo Admin Panel</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap">
+    <link rel="shortcut icon" href="../images/admin.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-montserrat">
+
+    <nav class="flex flex-col bg-[#0d1314] z-[2] absolute right-0 left-0 top-0
+    lg:top-0 lg:left-0 lg:bottom-0 lg:right-[90%]">
+        <div class="flex flex-row w-full justify-between p-7 items-center lg:justify-center">
+            <div >
+                <img class="h-20 w-17 cursor-pointer " style="-webkit-tap-highlight-color: transparent;" src="../images/easy go high res.png" alt="logo" loading="lazy">
+            </div>
+
+            <div class="pr-1 ">
+                <img class="h-6 w-6 cursor-pointer lg:hidden" style="-webkit-tap-highlight-color: transparent;" id="hamburgerMenuIcon" src="../images/hamburger.png" alt="hamburger menu icon">
+            </div>
+        </div>
+
+        <div class="hidden flex flex-col lg:block" id="mobileNavDiv">
+            <ul class="text-white">
+                <li class="nav-item px-7 py-4 lg:bg-[#070d0e] lg:hover:bg-[#070d0e] lg:transition-all lg:duration-300 lg:ease-in-out" id="chartsDetailsID" style="-webkit-tap-highlight-color: transparent;"><a href="#">Charts and Details</a></li>
+                <li class="nav-item px-7 py-4 lg:hover:bg-[#070d0e] lg:transition-all lg:duration-300 lg:ease-in-out" id="arraigementID" style="-webkit-tap-highlight-color: transparent;"><a href="#">Add Arraigement</a></li>
+                <li class="nav-item px-7 py-4 lg:hover:bg-[#070d0e] lg:transition-all lg:duration-300 lg:ease-in-out" id="overviewID" style="-webkit-tap-highlight-color: transparent;"><a href="#">Overview</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="chartsSection" class="pt-[10.72rem] h-auto bg-[#070d0e] lg:h-screen lg:pt-0 lg:pl-[10%]">
+        <div class="flex flex-col-reverse items-center lg:flex-row-reverse">
+
+            <div class="flex items-center justify-center w-[100%] lg:h-screen lg:flex-col">
+                
+                <div class="flex items-center justify-center w-[100%] lg:h-screen">
+
+                    <div class=" w-10/12 mb-10 flex flex-col  lg:w-auto lg:grid lg:grid-cols-2">
+
+                        <div class="firstCanvas flex flex-col rounded-xl bg-[#12181a] lg:mb-10">
+
+                            <div class="flex flex-col justify-center text-white py-4 pl-5">
+                                <p>Trending Countries</p>
+                                <p class="text-[12px]">per customer</p>
+                            </div>
+
+                            <div>
+                                <canvas id="myDoughnutChart" class="mb-10"></canvas>
+                            </div>
+                            
+                            <div class="flex flex-row justify-between text-white px-5 pb-5">
+                                <p>
+                                    Spain
+                                </p>
+
+                                <span class="h-5 w-10 flex items-center justify-center rounded-3xl bg-red-500 text-xs">
+                                    300
+                                </span>
+                            </div>
+
+                            <div class="flex flex-row justify-between text-white px-5 pb-5">
+                                <p>
+                                    Colombia
+                                </p>
+
+                                <span class="h-5 w-10 flex items-center justify-center rounded-3xl bg-blue-400 text-xs">
+                                    450
+                                </span>
+                            </div>
+
+                            <div class="flex flex-row justify-between text-white px-5 pb-5">
+                                <p>
+                                    Greece
+                                </p>
+
+                                <span class="h-5 w-10 flex items-center justify-center rounded-3xl bg-yellow-500 text-xs">
+                                    230
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="firstCanvas mt-7 lg:block flex flex-col rounded-xl bg-[#12181a] lg:ml-[3.5rem] lg:mt-0 lg:mb-10">
+
+                            <div class="flex flex-col justify-center text-white py-4 pl-5">
+                                <p>Customer Reviews</p>
+                                <p class="text-[12px]">per seasonal surveys</p>
+                            </div>
+
+                            <div>
+                                <canvas id="myPieChart" class="lg:mb-[12.5%]"></canvas>
+                            </div>
+                            
+                            <div class="flex flex-row justify-between text-white px-5 pb-5">
+                                <p>
+                                    Positive
+                                </p>
+
+                                <span class="h-5 w-10 flex items-center justify-center rounded-3xl bg-green-600 text-xs">
+                                    90%
+                                </span>
+                            </div>
+
+                            <div class="flex flex-row justify-between text-white px-5 pb-5">
+                                <p>
+                                    Negative
+                                </p>
+
+                                <span class="h-5 w-10 flex items-center justify-center rounded-3xl bg-red-500 text-xs">
+                                    2%
+                                </span>
+                            </div>
+
+                            <div class="flex flex-row justify-between text-white px-5 pb-5">
+                                <p>
+                                    Neutral
+                                </p>
+
+                                <span class="h-5 w-10 flex items-center justify-center rounded-3xl bg-gray-500 text-xs">
+                                    8%
+                                </span>
+                            </div>
+
+                        </div>
+                        
+                        <div class="secondCanvas hidden lg:block lg:text-white bg-[#12181a] lg:p-5">
+                            <p class="lg:py-4 lg:pl-5">Most Popular Carriers</p>
+                            <canvas id="myLineChart"></canvas>
+                        </div>
+                        
+
+                        <div>    
+                            <div class="thirdCanvas hidden lg:block lg:text-white lg:bg-[#12181a] lg:p-5">
+                                <p class="lg:py-4 lg:pl-5">Visitor Conversions</p>
+                                <canvas id="myBarChart"></canvas>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="flex flex-col items-center justify-center w-[100%] lg:h-screen">
+
+                <div class="flex flex-col items-center justify-center w-[100%] lg:h-screen">            
+
+                    <div class="h-[8rem] w-[90%] lg:w-10/12 mb-10 flex flex-row bg-[#12181a] rounded-md">
+                        <div class="w-[2%] bg-blue-500"></div>
+
+                        <div class="w-[73%] flex flex-col justify-between pl-4 py-3">
+                            <span><p class="text-white text-xl">Total orders</p></span>
+                            <p class="text-blue-500 text-3xl font-semibold">57</p>
+                            <p class="text-gray-400 text-sm">+2.5 from last week</p>
+                        </div>
+
+                        <div class="w-[25%] flex justify-center items-center ">
+                            <div class="h-14 w-14 flex items-center justify-center border-white border-2 rounded-full bg-blue-500">
+                                <img class="pt-1" src="../images/shopping-cart.png" alt="shopping cart">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="h-[8rem] w-[90%] lg:w-10/12 mb-10 flex flex-row bg-[#12181a] rounded-md">
+                        <div class="w-[2%] bg-gradient-to-r from-[#ff416c] to-[#ff4b2b]"></div>
+
+                        <div class="w-[73%] flex flex-col justify-between pl-4 py-3">
+                            <p class="text-white text-xl">Total revenue</p>
+                            <p class="text-[#e4476b] text-3xl font-semibold">$141,725</p>
+                            <p class="text-gray-400 text-sm">+0.4 from last week</p>
+                        </div>
+
+                        <div class="w-[25%] flex justify-center items-center ">
+                            <div class="h-14 w-14 flex items-center justify-center border-white border-2 rounded-full bg-gradient-to-r from-[#ff416c] to-[#ff4b2b]">
+                                <img class="pb-1" src="../images/wallet-filled-money-tool.png" alt="wallet picture">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-[8rem] w-[90%] lg:w-10/12 mb-10 flex flex-row bg-[#12181a] rounded-md">
+                        <div class="w-[2%] bg-green-500"></div>
+
+                        <div class="w-[73%] flex flex-col justify-between pl-4 py-3">
+                            <p class="text-white text-xl">Bounce Rate</p>
+                            <p class="text-green-500 text-3xl font-semibold">34.6%</p>
+                            <p class="text-gray-400 text-sm">+4.5 from last week</p>
+                        </div>
+
+                        <div class="w-[25%] flex justify-center items-center ">
+                            <div class="h-14 w-14 flex items-center justify-center border-white border-2 rounded-full bg-green-600">
+                                <img class="pb-1" src="../images/bar-chart.png" alt="bar chart icon">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-[8rem] w-[90%] lg:w-10/12 mb-10 flex flex-row bg-[#12181a] rounded-md">
+                        <div class="w-[2%] bg-yellow-400"></div>
+
+                        <div class="w-[73%] flex flex-col justify-between pl-4 py-3">
+                            <p class="text-white text-xl">Resort Partnerships</p>
+                            <p class="text-yellow-400 text-3xl font-semibold">27</p>
+                            <p class="text-gray-400 text-sm">+2% from last week</p>
+                        </div>
+
+                        <div class="w-[25%] flex justify-center items-center ">
+                            <div class="h-14 w-14 flex items-center justify-center border-white border-2 rounded-full bg-yellow-500">
+                                <img src="../images/handshake.png" alt="group icon">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-[8rem] w-[90%] lg:w-10/12 mb-10 flex flex-row bg-[#12181a] rounded-md">
+                        <div class="w-[2%] bg-orange-400"></div>
+
+                        <div class="w-[73%] flex flex-col justify-between pl-4 py-3">
+                            <p class="text-white text-xl">Total Customers</p>
+                            <p class="text-orange-400 text-3xl font-semibold">217</p>
+                            <p class="text-gray-400 text-sm">+8.4% from last week</p>
+                        </div>
+
+                        <div class="w-[25%] flex justify-center items-center ">
+                            <div class="h-14 w-14 flex items-center justify-center border-white border-2 rounded-full bg-orange-500">
+                                <img class="pb-1" src="../images/group.png" alt="group icon">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>   
+            </div>  
+
+        </div>
+    </section>
+
+    <section id="arraigementSection" class="lg:hidden hidden flex flex-col lg:flex lg:flex-row pt-[7.5rem] lg:overflow-hidden h-auto bg-[#070d0e] lg:h-screen lg:pt-0 lg:pl-[10%] ">
+        
+        <div class="w-full lg:w-[55%] text-white flex flex-col items-center justify-center">
+
+            <p class="text-white text-4xl px-10 py-10 text-center lg:text-left">Add an Arraigement</p>
+
+            <div class="card h-[30rem] lg:h-[80%] w-[80%] lg:w-[50%] flex items-center justify-center bg-gray-600 group lg:group-hover:bg-gray-800 transition duration-300 rounded-xl bg-opacity-30 lg:hover:bg-opacity-40">
+                <span id="plusAdd" class="h-[4rem] w-[4rem] flex items-center justify-center bg-[#12181a] lg:group-hover:text-[#12181a] lg:group-hover:bg-gray-300  text-white text-4xl lg:transition lg:duration-300 rounded-full cursor-pointer" style="-webkit-tap-highlight-color: transparent;">+</span>
+            </div>
+
+            <div class="cardTwo hidden h-[32rem] lg:h-[80%] w-[80%] lg:w-[50%] flex flex-col items-center justify-between bg-gray-600 group transition duration-300 rounded-xl bg-opacity-30">
+                <input type="file" class="hidden" id="pictureUploadButton">
+                <label for="pictureUploadButton" class="cursor-pointer flex flex-row mt-5 px-5 py-4 bg-[#12181a cursor-pointer rounded-xl"><img src="../images/upload-icon.png" alt="">Upload Thumbnail</label>
+                <p class="text-gray-400 text-sm">Choose a Country</p>
+
+                <div class="w-full flex flex-row justify-center">
+                    <img src="../images/greece.png" alt="greece pic" class="h-7 w-7 mx-2 cursor-pointer">
+                    <img src="../images/colombia.png" alt="colombia pic" class="h-7 w-7 mx-2 cursor-pointer">
+                    <img src="../images/netherlands.png" alt="netherlands pic" class="h-7 w-7 mx-2 cursor-pointer">
+                    <img src="../images/spain.png" alt="spain pic" class="h-7 w-7 mx-2 cursor-pointer">
+                    <img src="../images/turkey.png" alt="turkey pic" class="h-7 w-7 mx-2 cursor-pointer">
+                </div>
+
+                <p class="text-gray-400 text-sm">Transportation Type</p>
+
+                <div class="w-full flex flex-row justify-center">
+                    <img src="../images/plane.png" alt="plane pic" class="h-7 w-7 mx-2 cursor-pointer">
+                    <img src="../images/bus.png" alt="bus pic" class="h-7 w-7 mx-2 cursor-pointer">
+                </div>
+
+                <p class="text-gray-400 text-sm">Destination name</p>
+
+                <input type="text" class="w-[80%] h-[5%] outline-none bg-[#12181a] text-white text-center rounded-md" maxlength="27" required>
+
+                <p class="text-gray-400 text-sm">Arraigement Duration</p>
+
+                <input type="date" id="datePickerInput" placeholder="Select a date range" class="w-[80%] h-[5%] py-5 outline-none bg-[#12181a] text-white text-center text-sm rounded-md">
+
+                <p class="text-gray-400 text-sm">Choose a Price</p>
+
+                <input type="text" class="w-[80%] h-[5%] outline-none bg-[#12181a] text-white text-center rounded-md" maxlength="4" required>
+
+                <button id="cardConfirm" class="h-12 w-[40%] my-5 bg-[#12181a] hover:bg-[#bdbb95] hover:text-black cursor-pointer transition duration-300">Confirm</button>
+
+            </div>
+
+
+        </div>
+
+        
+
+        <div class="w-[100%] lg:w-[45%] text-white lg:flex lg:flex-col items-center justify-center">
+
+            <div class="h-auto my-8 lg:my-4">
+                <h1 class="text-4xl text-center lg:text-left">Recent Orders</h1>
+            </div>
+
+            <div class="h-auto w-full lg:flex lg:flex-col lg:items-center lg:justify-center">
+
+                <div class="h-auto w-full lg:w-10/12 mb-8 flex flex-row bg-[#12181a] rounded-md">
+                    <div class="w-[75%] flex flex-col justify-between pl-4 py-3">
+                        <p class="text-gray-400 text-sm mb-1">to</p>
+                        <p class="text-white text-xl mb-1">Palma De Mallorca</p>
+                        <p class="text-gray-400 text-sm mb-1">via</p>
+                        <p class="text-white text-xl mb-1">Airplane</p>
+                        <p class="text-gray-400 text-sm mb-1">no. passangers</p>
+                        <p class="text-orange-400 text-3xl font-semibold mb-1">4</p>
+                        <p class="text-gray-400 text-sm mb-1">duration</p>
+                        <p class="text-white text-xl mb-1">12.10 - 22.10</p>
+                    </div>
+
+                    <div class="w-[25%] flex justify-center items-center ">
+                        <div class="h-16 w-16 flex items-center justify-center  ">
+                            <img class="pb-1" src="../images/spain.png" alt="group icon">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-auto w-full lg:w-10/12 mb-8 flex flex-row bg-[#12181a] rounded-md">
+                    <div class="w-[75%] flex flex-col justify-between pl-4 py-3">
+                        <p class="text-gray-400 text-sm mb-1">to</p>
+                        <p class="text-white text-xl mb-1">Medellin</p>
+                        <p class="text-gray-400 text-sm mb-1">via</p>
+                        <p class="text-white text-xl mb-1">Airplane</p>
+                        <p class="text-gray-400 text-sm mb-1">no. passangers</p>
+                        <p class="text-yellow-400 text-3xl font-semibold mb-1">2</p>
+                        <p class="text-gray-400 text-sm mb-1">duration</p>
+                        <p class="text-white text-xl mb-1">02.10 - 22.10</p>
+                    </div>
+
+                    <div class="w-[25%] flex justify-center items-center ">
+                        <div class="h-16 w-16 flex items-center justify-center  ">
+                            <img class="pb-1" src="../images/colombia.png" alt="group icon">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-auto w-full lg:w-10/12 mb-8 flex flex-row bg-[#12181a] rounded-md">
+                    <div class="w-[75%] flex flex-col justify-between pl-4 py-3">
+                        <p class="text-gray-400 text-sm mb-1">to</p>
+                        <p class="text-white text-xl mb-1">Zakynthos</p>
+                        <p class="text-gray-400 text-sm mb-1">via</p>
+                        <p class="text-white text-xl mb-1">Bus</p>
+                        <p class="text-gray-400 text-sm mb-1">no. passangers</p>
+                        <p class="text-blue-400 text-3xl font-semibold mb-1">5</p>
+                        <p class="text-gray-400 text-sm mb-1">duration</p>
+                        <p class="text-white text-xl mb-1">04.08 - 11.08</p>
+                    </div>
+
+                    <div class="w-[25%] flex justify-center items-center ">
+                        <div class="h-16 w-16 flex items-center justify-center  ">
+                            <img class="pb-1" src="../images/greece.png" alt="group icon">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </section>
+  
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="index.js"></script>
+</body>
+</html>
